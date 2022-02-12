@@ -1,8 +1,9 @@
 import withObservables, { ObservableifyProps } from '@nozbe/with-observables'
 import { Client as ClientDB } from 'models'
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { Client, tables } from 'storage'
+import { createClientService } from 'services/Client/api';
 import { styles } from './styles'
 
 interface Props {
@@ -12,10 +13,42 @@ interface Props {
 type InputProps = ObservableifyProps<Props, 'client'>
 
 export const ClientCardToObserve: React.FC<Props> = ({ client }) => {
+  const onDelete = async (id: string) => {
+    try {
+      await createClientService().delete(id)
+    } catch (error) {
+      console.log('Error: ', JSON.stringify(error))
+    }
+  }
+
   return (
-    <View style={styles.root}>
-      <Text>Hello World</Text>
-    </View>
+    <>
+      {
+        client.map((cli, index) => (
+          <View key={index} style={styles.root}>
+            <View>
+              <Text>
+                <Text>Client name: </Text>
+                <Text>{cli.socialName}</Text>
+              </Text>
+              <Text>
+                <Text>Document: </Text>
+                <Text>{cli.document}</Text>
+              </Text>
+            </View>
+
+            <TouchableOpacity
+              onPress={() => onDelete(cli.id)}
+              style={styles.delete}
+            >
+              <Text style={styles.deleteText}>DELETE</Text>
+            </TouchableOpacity>
+          </View>
+      
+        ))
+
+      }
+    </>
   )
 }
 

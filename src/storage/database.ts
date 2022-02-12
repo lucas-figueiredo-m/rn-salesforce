@@ -23,3 +23,16 @@ export const database = new Database({
   ],
   // actionsEnabled: true
 })
+
+if (__DEV__) {
+  // Import connectDatabases function and required DBDrivers
+  const {
+    connectDatabases,
+    WatermelonDB,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  } = require('react-native-flipper-databases');
+
+  connectDatabases([
+    new WatermelonDB(database), // Pass in database definition
+  ]);
+}

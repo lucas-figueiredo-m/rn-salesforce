@@ -1,8 +1,11 @@
 import { appSchema, tableSchema } from "@nozbe/watermelondb";
+import { ColumnClient } from "storage/Client";
 
 export enum Tables {
   Client = 'client'
 }
+
+// TODO: Create the ClientColumns enum
 
 export const schema = appSchema({
   version: 1,
@@ -10,9 +13,9 @@ export const schema = appSchema({
     tableSchema({
       name: Tables.Client,
       columns: [
-        { name: 'social_name', type: 'string'},
+        { name: ColumnClient.socialName, type: 'string'},
         // { name: columns.client.fantasyName, type: 'string'},
-        // { name: columns.client.document, type: 'number'},
+        { name: ColumnClient.document, type: 'string'},
         // { name: columns.client.address, type: 'number'},
         // { name: columns.client.number, type: 'string'},
         // { name: columns.client.complement, type: 'string'},

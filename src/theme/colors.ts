@@ -1,4 +1,6 @@
 export enum Colors {
   White = '#FFFFFF',
-  Aqua = 'aqua'
+  Aqua = 'aqua',
+  Yellow = 'yellow',
+  DarkRed = '#991111'
 }

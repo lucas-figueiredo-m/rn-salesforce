@@ -1,31 +1,42 @@
 import { Model } from "@nozbe/watermelondb";
 import { Tables } from 'storage/schema'
-import { date, field, readonly } from "@nozbe/watermelondb/decorators";
+import { date, field, readonly, text } from "@nozbe/watermelondb/decorators";
 import { columns, tables } from "storage";
 
-// const ownColumns = columns.client
+export enum ColumnClient {
+  socialName = 'social_name',
+  fantasyName = 'fantasyName',
+  document = 'document',
+  phone = 'phone',
+  address = 'address',
+  number = 'number',
+  complement = 'complement',
+  zipCode = 'zipCode',
+  createdAt = 'createdAt',
+  updatedAt = 'updatedAt'
+}
 
 export class Client extends Model {
   static table = Tables.Client;
 
-  @field ('social_name') socialName!: string
+  @field (ColumnClient.socialName) socialName!: string
 
-  // @text (ownColumns.fantasyName) fantasyName!: string
+  // @text (ColumnClient.fantasyName) fantasyName!: string
 
-  // @text (ownColumns.document) document!: string
+  @text (ColumnClient.document) document!: string
 
-  // @text (ownColumns.address) address!: string
+  // @text (ColumnClient.address) address!: string
 
-  // @text (ownColumns.number) number!: string
+  // @text (ColumnClient.number) number!: string
 
-  // @text (ownColumns.complement) complement!: string
+  // @text (ColumnClient.complement) complement!: string
 
-  // @text (ownColumns.zipCode) zipCode!: string
+  // @text (ColumnClient.zipCode) zipCode!: string
 
-  // @text (ownColumns.phone) phone!: string
+  // @text (ColumnClient.phone) phone!: string
 
-  @readonly @date('created_at') createdAt!: Date;
+  @readonly @date(ColumnClient.createdAt) createdAt!: Date;
 
-  @readonly @date('updated_at') updatedAt!: Date;
+  @readonly @date(ColumnClient.updatedAt) updatedAt!: Date;
 
 }

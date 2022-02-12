@@ -1,7 +1,7 @@
 export interface ClientWithoutId {
   socialName: string,
   // fantasyName: string,
-  // document: string,
+  document: string,
   // phone: string,
   // address: string,
   // number: string,
