@@ -11,6 +11,7 @@ import Home from 'assets/icons/home.svg'
 import People from 'assets/icons/people.svg'
 import Document from 'assets/icons/document.svg'
 import Menu from 'assets/icons/menu.svg'
+import { TabBar } from './components/TabBar'
 
 const Tab = createBottomTabNavigator<TabParams>()
 
@@ -24,6 +25,7 @@ export const TabNavigator: React.FC = () => {
         headerShown: false,
         tabBarActiveTintColor: 'orange'
       }}
+      tabBar={(props) => <TabBar { ...props} />}
     >
       <Tab.Screen
         name={TabRoutes.Home}
