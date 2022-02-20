@@ -2,13 +2,13 @@ import Toast from "react-native-toast-message"
 
 
 export default () => {
-  const wifiDisconnected = (text1: string) => {
+  const wifiDisconnected = () => {
     Toast.show({
       type: 'wifiToast',
       position: 'top',
-      text1,
-      visibilityTime: 5000,
+      visibilityTime: 7500,
       autoHide: true,
+      onPress: () => Toast.hide()
     })
   }
 

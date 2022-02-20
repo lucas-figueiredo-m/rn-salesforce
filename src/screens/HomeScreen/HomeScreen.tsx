@@ -6,9 +6,9 @@ const HomeScreen: React.FC = () => {
   const { wifiDisconnected } = useToastMessage()
   
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: 'green'}}>
       <TouchableOpacity
-        onPress={() => wifiDisconnected('error.wifiDisconnected')}
+        onPress={() => wifiDisconnected()}
         style={{ width: 100, height: 40, backgroundColor: 'yellow' }}
       >
         <Text>Home</Text>

@@ -9,7 +9,7 @@ const Stack = createStackNavigator<MainStackParams>()
 const Router: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={MainRoutes.Tabs} component={TabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>

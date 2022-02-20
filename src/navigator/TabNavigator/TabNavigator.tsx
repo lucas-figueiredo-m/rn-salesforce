@@ -12,6 +12,8 @@ import People from 'assets/icons/people.svg'
 import Document from 'assets/icons/document.svg'
 import Menu from 'assets/icons/menu.svg'
 import { TabBar } from './components/TabBar'
+import { Colors } from 'theme'
+import useTranslation from 'hooks/useTranslation'
 
 const Tab = createBottomTabNavigator<TabParams>()
 
@@ -19,11 +21,12 @@ const Tab = createBottomTabNavigator<TabParams>()
 // https://reactnavigation.org/docs/bottom-tab-navigator#tabbar
 
 export const TabNavigator: React.FC = () => {
+  const t = useTranslation()
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: 'orange'
+        // headerShown: false,
+        tabBarActiveTintColor: Colors.Flame
       }}
       tabBar={(props) => <TabBar { ...props} />}
     >
@@ -31,7 +34,7 @@ export const TabNavigator: React.FC = () => {
         name={TabRoutes.Home}
         component={HomeScreen}
         options={{
-          tabBarLabel: 'Home',
+          tabBarLabel: t('tabNames.home'),
           tabBarIcon: ({ color }) => <SVG xml={Home} color={color} />
         }}
       />
@@ -39,7 +42,7 @@ export const TabNavigator: React.FC = () => {
         name={TabRoutes.Clients}
         component={ClientsScreen}
         options={{
-          tabBarLabel: 'Clients',
+          tabBarLabel: t('tabNames.clients'),
           tabBarIcon: ({ color }) => <SVG xml={People} color={color} />
         }}
       />
@@ -47,7 +50,7 @@ export const TabNavigator: React.FC = () => {
         name={TabRoutes.Orders}
         component={OrdersScreen}
         options={{
-          tabBarLabel: 'Orders',
+          tabBarLabel: t('tabNames.orders'),
           tabBarIcon: ({ color }) => <SVG xml={Document} color={color} />
         }}
       />
@@ -55,7 +58,7 @@ export const TabNavigator: React.FC = () => {
         name={TabRoutes.Menu}
         component={MenuScreen}
         options={{
-          tabBarLabel: 'Menu',
+          tabBarLabel: t('tabNames.menu'),
           tabBarIcon: ({ color }) => <SVG xml={Menu} color={color} />
         }}
       />

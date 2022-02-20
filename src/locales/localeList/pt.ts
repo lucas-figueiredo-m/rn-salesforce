@@ -1,5 +1,14 @@
 export default {
+  tabNames: {
+    home: 'Início',
+    clients: 'Clientes',
+    orders: 'Pedidos',
+    menu: 'Menu'
+  },
   error: {
-    wifiDisconnected: 'Voce está desconectado!'
+    wifi: {
+      title: 'Voce está desconectado!',
+      message: 'Não se preocupe. Tudo será sincronizado ao conectar-se novamente'
+    }
   }
 }
