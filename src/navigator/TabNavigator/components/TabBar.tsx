@@ -7,6 +7,7 @@ import { Colors } from 'theme';
 import { Tab } from './Tab';
 import { SVG } from 'components';
 import plus from 'assets/icons/plus.svg'
+import { ModalRoutes } from 'navigator/RouterTypes';
 
 const lineGenerator = line()
   .x(([x]) => x)
@@ -125,7 +126,10 @@ export const TabBar: React.FC<BottomTabBarProps> = ({
         <Path fill={Colors.White} { ...{ d }} />
       </Svg>
 
-      <TouchableOpacity style={styles.floatingButton}>
+      <TouchableOpacity
+        style={styles.floatingButton}
+        onPress={() => navigation.navigate(ModalRoutes.AddOrder)}  
+      >
         <SVG xml={plus} color={Colors.White} width={35} height={35} strokeWidth={2} />
       </TouchableOpacity>
       
