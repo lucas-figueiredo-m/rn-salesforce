@@ -1,12 +1,31 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { TouchableOpacity, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Colors } from 'theme'
+import Container from 'components/Container/Container'
+
+import Header from 'components/Header/Header'
+
+const styles = StyleSheet.create({
+  root: {
+    width: '100%',
+    backgroundColor: Colors.White,
+    maxHeight: '100%',
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
+    padding: 15
+  }
+})
 
 export const AddClientScreen: React.FC = () => {
   const { goBack } = useNavigation()
   return (
-    <TouchableOpacity onPress={goBack} style={{ width: '100%', height: '70%', backgroundColor: Colors.White }} />
+    <Container.Modal>
+      <View style={styles.root}>
+        <Header.Modal onLeftPress={goBack} label='modal.newClient.title' />
+        <View style={{ height: 100 }} />
+      </View>
+    </Container.Modal>
   )
 }

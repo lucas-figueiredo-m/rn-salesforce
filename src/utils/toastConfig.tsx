@@ -1,12 +1,12 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { ToastConfig } from 'react-native-toast-message';
-import { Colors } from 'theme';
+import React from 'react'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { ToastConfig } from 'react-native-toast-message'
+import { Colors } from 'theme'
 import wifiOff from 'assets/icons/wifi-off.svg'
 
-import { useTranslation } from 'react-i18next';
-import { SVG } from 'components';
-import { FontFamily } from 'theme/fonts';
+import { useTranslation } from 'react-i18next'
+import { SVG } from 'components'
+import { FontFamily } from 'theme/fonts'
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: '3%',
     borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    borderBottomLeftRadius: 10
   },
   icon: {
     marginHorizontal: 10
@@ -42,8 +42,8 @@ const styles = StyleSheet.create({
 })
 
 export const toastConfig: ToastConfig = {
-  wifiToast: ({ onPress }) => {
-    const { t } = useTranslation();
+  WifiToast: ({ onPress }) => {
+    const { t } = useTranslation()
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={onPress} style={styles.container}>
         <View style={styles.colorBar} />

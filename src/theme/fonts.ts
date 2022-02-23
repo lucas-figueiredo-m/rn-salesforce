@@ -1,5 +1,4 @@
-import { StyleSheet } from "react-native";
-
+import { StyleSheet } from 'react-native'
 
 export enum FontFamily {
   Montserrat = 'Montserrat'
@@ -36,18 +35,18 @@ export default {
     xxl: { fontSize: FontSize.xxl },
     xxxl: { fontSize: FontSize.xxxl },
     xxxxl: { fontSize: FontSize.xxxxl },
-    title: { fontSize: FontSize.title },
+    title: { fontSize: FontSize.title }
   }),
   weight: StyleSheet.create({
-    black: { fontWeight: "900" },
-    extraBold: { fontWeight: "800" },
-    bold: { fontWeight: "700" },
-    semibold: { fontWeight: "600" },
-    medium: { fontWeight: "500" },
-    regular: { fontWeight: "400" },
-    thin: { fontWeight: "300" },
-    light: { fontWeight: "200" },
-    extraLight: { fontWeight: "100" },
+    black: { fontWeight: '900' },
+    extraBold: { fontWeight: '800' },
+    bold: { fontWeight: '700' },
+    semibold: { fontWeight: '600' },
+    medium: { fontWeight: '500' },
+    regular: { fontWeight: '400' },
+    thin: { fontWeight: '300' },
+    light: { fontWeight: '200' },
+    extraLight: { fontWeight: '100' }
   }),
   alignment: StyleSheet.create({
     left: { textAlign: 'left' },
@@ -59,7 +58,6 @@ export default {
     uppercase: { textTransform: 'uppercase' },
     lowercase: { textTransform: 'lowercase' },
     capitalize: { textTransform: 'capitalize' },
-    none: { textTransform: 'none' },
+    none: { textTransform: 'none' }
   })
-
 }

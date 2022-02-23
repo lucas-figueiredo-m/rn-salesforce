@@ -1,19 +1,17 @@
-
-import React from 'react';
-import { StatusBar, View } from 'react-native';
-import { styles } from 'styles';
+import React from 'react'
+import { StatusBar, View } from 'react-native'
+import { styles } from 'styles'
 // import { createClientService } from 'services/Client/api';
 // import { Client, columns, database, tables } from 'storage';
 // import { ClientCard } from 'components';
 import 'locales'
-import Router from 'navigator/Router';
-import Toast from 'react-native-toast-message';
-import { toastConfig } from 'utils/toastConfig';
+import Router from 'navigator/Router'
+import Toast from 'react-native-toast-message'
+import { toastConfig } from 'utils/toastConfig'
 
 // const Clients = database.get<Client>(tables.client).query().observe()
 
 const App: React.FC = () => {
-
   // const [count, setCount] = useState(0)
 
   // const retrieveData = async () => {
@@ -31,7 +29,7 @@ const App: React.FC = () => {
   //       document: '104.979.466-45'
   //     })
   //     setCount(prevCount => prevCount + 1)
-      
+
   //   } catch (error) {
   //     console.log('Error: ', JSON.stringify(error))
   //   }
@@ -64,6 +62,6 @@ const App: React.FC = () => {
 
   //   </SafeAreaView>
   // );
-};
+}
 
-export default App;
+export default App

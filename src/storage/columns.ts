@@ -1,5 +1,5 @@
-import { columnName } from "@nozbe/watermelondb";
-import { ColumnClient } from "./Client";
+import { columnName } from '@nozbe/watermelondb'
+import { ColumnClient } from './Client'
 
 export const columns = {
   client: {

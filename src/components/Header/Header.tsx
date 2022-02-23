@@ -6,22 +6,22 @@ import { Translation } from 'types/common'
 import x from 'assets/icons/x.svg'
 import { SVG } from 'components/SVG/SVG'
 import { Colors } from 'theme'
+import useTheme from 'hooks/useTheme'
 
 interface Props {
   onLeftPress: () => void
   label: Translation
 }
 
-const Modal: React.FC<Props> = ({ onLeftPress, label}) => {
+const Modal: React.FC<Props> = ({ onLeftPress, label }) => {
+  const { Font, Layout } = useTheme()
+
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Pressable
-        onPress={onLeftPress}
-        hitSlop={defaultHitSlop}
-      >
+    <View style={Layout.rows.verticalCenter}>
+      <Pressable onPress={onLeftPress} hitSlop={defaultHitSlop}>
         <SVG xml={x} width={30} height={30} color={Colors.Black} />
       </Pressable>
-      <Label.H1 t={label} />
+      <Label.H3 t={label} style={Font.transform.uppercase} />
     </View>
   )
 }

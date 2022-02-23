@@ -23,10 +23,7 @@ export const AddOrderScreen: React.FC = () => {
   return (
     <Container.Modal>
       <View style={styles.root}>
-        <Header.Modal
-          onLeftPress={goBack}
-          label='modal.newOrder.title'
-        />
+        <Header.Modal onLeftPress={goBack} label='modal.newOrder.title' />
         <View style={{ height: 100 }} />
       </View>
     </Container.Modal>

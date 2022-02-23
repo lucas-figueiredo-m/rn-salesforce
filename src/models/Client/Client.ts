@@ -1,7 +1,7 @@
 export interface ClientWithoutId {
-  socialName: string,
+  socialName: string
   // fantasyName: string,
-  document: string,
+  document: string
   // phone: string,
   // address: string,
   // number: string,
@@ -11,7 +11,7 @@ export interface ClientWithoutId {
   // updatedAt: string
 }
 
-export type Client = ClientWithoutId & {id: string};
+export type Client = ClientWithoutId & { id: string }
 
 // export const canCreatePerson = (person: PersonWithoutId): boolean => {
 //   return Boolean(person.name && person.birthday);

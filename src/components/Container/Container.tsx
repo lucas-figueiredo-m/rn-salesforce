@@ -12,11 +12,7 @@ const styles = StyleSheet.create({
 })
 
 const Modal: React.FC = ({ children }) => {
-  return (
-    <View style={[styles.fullScreen, styles.flexBottom]}>
-      {children}
-    </View>
-  )
+  return <View style={[styles.fullScreen, styles.flexBottom]}>{children}</View>
 }
 
 export default {

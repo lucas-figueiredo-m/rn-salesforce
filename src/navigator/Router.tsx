@@ -15,13 +15,12 @@ const Router: React.FC = () => {
     <NavigationContainer ref={rootNavigationRef}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={MainRoutes.Tabs} component={TabNavigator} />
-        
+
         <Stack.Group screenOptions={modalOptions}>
           <Stack.Screen name={ModalRoutes.AddClient} component={AddClientScreen} />
           <Stack.Screen name={ModalRoutes.AddOrder} component={AddOrderScreen} />
         </Stack.Group>
       </Stack.Navigator>
-
     </NavigationContainer>
   )
 }

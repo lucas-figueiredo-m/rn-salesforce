@@ -1,11 +1,10 @@
-import { StyleSheet } from "react-native";
-import { Colors } from "theme";
-
+import { StyleSheet } from 'react-native'
+import { Colors } from 'theme'
 
 export const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: Colors.White,
+    backgroundColor: Colors.White
   },
 
   card: {
@@ -20,8 +19,5 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.Yellow
   },
 
-  
-  content: {
-
-  }
+  content: {}
 })

@@ -2,24 +2,23 @@ import { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import React, { useMemo } from 'react'
 import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native'
 import { Svg, Path } from 'react-native-svg'
-import { line, curveBasis } from 'd3-shape';
-import { Colors } from 'theme';
-import { Tab } from './Tab';
-import { SVG } from 'components';
+import { line, curveBasis } from 'd3-shape'
+import { Colors } from 'theme'
+import { Tab } from './Tab'
+import { SVG } from 'components'
 import plus from 'assets/icons/plus.svg'
-import { ModalRoutes } from 'navigator/RouterTypes';
+import { ModalRoutes } from 'navigator/RouterTypes'
 
 const lineGenerator = line()
   .x(([x]) => x)
-  .y(([, y]) => y);
-
+  .y(([, y]) => y)
 
 const { width } = Dimensions.get('window')
 
 const TAB_HEIGHT = 80
 const CAVITY_WIDTH = 60
 const SMALL_CURVE = CAVITY_WIDTH / 2
-const TAB_WIDTH = (width - CAVITY_WIDTH - 2*SMALL_CURVE)/4
+const TAB_WIDTH = (width - CAVITY_WIDTH - 2 * SMALL_CURVE) / 4
 
 const styles = StyleSheet.create({
   tab: {
@@ -28,11 +27,11 @@ const styles = StyleSheet.create({
     shadowColor: Colors.Black,
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 4
     },
-    shadowOpacity: 0.30,
+    shadowOpacity: 0.3,
     shadowRadius: 4.65,
-    elevation: 8,
+    elevation: 8
   },
   floatingButton: {
     position: 'absolute',
@@ -42,16 +41,16 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: Colors.Flame,
     borderRadius: 30,
-    bottom: TAB_HEIGHT/2 + 20,
+    bottom: TAB_HEIGHT / 2 + 20,
     alignSelf: 'center',
     shadowColor: Colors.Black,
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 4
     },
-    shadowOpacity: 0.30,
+    shadowOpacity: 0.3,
     shadowRadius: 4.65,
-    elevation: 8,
+    elevation: 8
   },
   tabContainer: {
     width,
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'absolute',
-    bottom: 0,
+    bottom: 0
   },
 
   left: {
@@ -73,12 +72,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export const TabBar: React.FC<BottomTabBarProps> = ({
-  descriptors,
-  state,
-  navigation
-}) => {
-
+export const TabBar: React.FC<BottomTabBarProps> = ({ descriptors, state, navigation }) => {
   const d = useMemo(() => {
     const left = lineGenerator([
       [0, 0],
@@ -86,7 +80,9 @@ export const TabBar: React.FC<BottomTabBarProps> = ({
       [TAB_WIDTH * 2, 0],
       [TAB_WIDTH * 2, 0],
       [TAB_WIDTH * 2, TAB_HEIGHT],
-      [0, TAB_HEIGHT],
+      [TAB_WIDTH * 2, TAB_HEIGHT],
+      [TAB_WIDTH * 2, TAB_HEIGHT],
+      [0, TAB_HEIGHT]
     ])
 
     const center = lineGenerator.curve(curveBasis)([
@@ -94,77 +90,68 @@ export const TabBar: React.FC<BottomTabBarProps> = ({
       [TAB_WIDTH * 2, 0],
       [TAB_WIDTH * 2, 0],
       [TAB_WIDTH * 2, 0],
-      [TAB_WIDTH * 2 + SMALL_CURVE, TAB_HEIGHT/8],
-      [TAB_WIDTH * 2 + SMALL_CURVE, TAB_HEIGHT/4],
-      [TAB_WIDTH * 2 + SMALL_CURVE + CAVITY_WIDTH/2, TAB_HEIGHT/2],
-      [width / 2 + CAVITY_WIDTH/2, TAB_HEIGHT / 4],
-      [width / 2 + CAVITY_WIDTH/2, TAB_HEIGHT / 8],
-      [width / 2 + CAVITY_WIDTH/2 + SMALL_CURVE, 0],
-      [width / 2 + CAVITY_WIDTH/2 + SMALL_CURVE, 0],
-      [width / 2 + CAVITY_WIDTH/2 + SMALL_CURVE, 0],
-      [width / 2 + CAVITY_WIDTH/2 + SMALL_CURVE, TAB_HEIGHT],
+      [TAB_WIDTH * 2 + SMALL_CURVE, TAB_HEIGHT / 8],
+      [TAB_WIDTH * 2 + SMALL_CURVE, TAB_HEIGHT / 4],
+      [TAB_WIDTH * 2 + SMALL_CURVE + CAVITY_WIDTH / 2, TAB_HEIGHT / 2],
+      [width / 2 + CAVITY_WIDTH / 2, TAB_HEIGHT / 4],
+      [width / 2 + CAVITY_WIDTH / 2, TAB_HEIGHT / 8],
+      [width / 2 + CAVITY_WIDTH / 2 + SMALL_CURVE, 0],
+      [width / 2 + CAVITY_WIDTH / 2 + SMALL_CURVE, 0],
+      [width / 2 + CAVITY_WIDTH / 2 + SMALL_CURVE, 0],
+      [width / 2 + CAVITY_WIDTH / 2 + SMALL_CURVE, TAB_HEIGHT]
     ])
 
     const right = lineGenerator([
-      [width / 2 + CAVITY_WIDTH/2 + SMALL_CURVE, 0],
+      [width / 2 + CAVITY_WIDTH / 2 + SMALL_CURVE, 0],
       [width, 0],
       [width, 0],
       [width, 0],
       [width, TAB_HEIGHT],
       [width, TAB_HEIGHT],
       [width, TAB_HEIGHT],
-      [width / 2 + CAVITY_WIDTH/2 + SMALL_CURVE, TAB_HEIGHT],
+      [width / 2 + CAVITY_WIDTH / 2 + SMALL_CURVE, TAB_HEIGHT]
     ])
 
     return `${left} ${right} ${center}`
   }, [])
 
-
   return (
     <View>
       <Svg style={styles.tab} height={80} color='yellow' width='100%'>
-        <Path fill={Colors.White} { ...{ d }} />
+        <Path fill={Colors.White} {...{ d }} />
       </Svg>
 
-      <TouchableOpacity
-        style={styles.floatingButton}
-        onPress={() => navigation.navigate(ModalRoutes.AddOrder)}  
-      >
+      <TouchableOpacity style={styles.floatingButton} onPress={() => navigation.navigate(ModalRoutes.AddOrder)}>
         <SVG xml={plus} color={Colors.White} width={35} height={35} strokeWidth={2} />
       </TouchableOpacity>
-      
+
       <View style={styles.tabContainer}>
         <View style={styles.left}>
-        {
-            state.routes.slice(0, 2).map((route, i) => (
-              <Tab
-                key={i}
-                options={descriptors[route.key].options}
-                navigation={navigation}
-                isFocused={state.index === i}
-                routeKey={route.key}
-                routeName={route.name}
-              />
-            ))
-          }
+          {state.routes.slice(0, 2).map((route, i) => (
+            <Tab
+              key={i}
+              options={descriptors[route.key].options}
+              navigation={navigation}
+              isFocused={state.index === i}
+              routeKey={route.key}
+              routeName={route.name}
+            />
+          ))}
         </View>
 
         <View style={styles.right}>
-          {
-            state.routes.slice(2, 4).map((route, i) => (
-              <Tab
-                key={i}
-                options={descriptors[route.key].options}
-                navigation={navigation}
-                isFocused={state.index === i + 2}
-                routeKey={route.key}
-                routeName={route.name}
-              />
-            ))
-          }
+          {state.routes.slice(2, 4).map((route, i) => (
+            <Tab
+              key={i}
+              options={descriptors[route.key].options}
+              navigation={navigation}
+              isFocused={state.index === i + 2}
+              routeKey={route.key}
+              routeName={route.name}
+            />
+          ))}
         </View>
       </View>
     </View>
   )
 }
-

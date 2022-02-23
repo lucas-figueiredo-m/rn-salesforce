@@ -16,7 +16,7 @@ export default {
   },
   modal: {
     newClient: {
-      title: 'Cadastrar cliente'
+      title: 'Novo Cadastro'
     },
     newOrder: {
       title: 'Novo pedido'

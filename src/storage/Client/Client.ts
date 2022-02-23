@@ -1,7 +1,7 @@
-import { Model } from "@nozbe/watermelondb";
+import { Model } from '@nozbe/watermelondb'
 import { Tables } from 'storage/schema'
-import { date, field, readonly, text } from "@nozbe/watermelondb/decorators";
-import { columns, tables } from "storage";
+import { date, field, readonly, text } from '@nozbe/watermelondb/decorators'
+import { columns, tables } from 'storage'
 
 export enum ColumnClient {
   socialName = 'social_name',
@@ -17,13 +17,13 @@ export enum ColumnClient {
 }
 
 export class Client extends Model {
-  static table = Tables.Client;
+  static table = Tables.Client
 
-  @field (ColumnClient.socialName) socialName!: string
+  @field(ColumnClient.socialName) socialName!: string
 
   // @text (ColumnClient.fantasyName) fantasyName!: string
 
-  @text (ColumnClient.document) document!: string
+  @text(ColumnClient.document) document!: string
 
   // @text (ColumnClient.address) address!: string
 
@@ -35,8 +35,7 @@ export class Client extends Model {
 
   // @text (ColumnClient.phone) phone!: string
 
-  @readonly @date(ColumnClient.createdAt) createdAt!: Date;
+  @readonly @date(ColumnClient.createdAt) createdAt!: Date
 
-  @readonly @date(ColumnClient.updatedAt) updatedAt!: Date;
-
+  @readonly @date(ColumnClient.updatedAt) updatedAt!: Date
 }

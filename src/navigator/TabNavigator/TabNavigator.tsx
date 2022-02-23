@@ -15,11 +15,23 @@ import Menu from 'assets/icons/menu.svg'
 import { TabBar } from './components/TabBar'
 import { Colors } from 'theme'
 import useTranslation from 'hooks/useTranslation'
-import { Pressable } from 'react-native'
+import { Pressable, StyleSheet } from 'react-native'
 import { defaultHitSlop } from 'constants/buttons'
 import Label from 'components/Label/Label'
 import useRootNavigator from 'hooks/useRootNavigator'
 import { ModalRoutes } from 'navigator/RouterTypes'
+import useTheme from 'hooks/useTheme'
+
+const styles = StyleSheet.create({
+  rightButtonContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  icon: {
+    marginLeft: 5,
+    marginRight: 15
+  }
+})
 
 const Tab = createBottomTabNavigator<TabParams>()
 
@@ -29,13 +41,14 @@ const Tab = createBottomTabNavigator<TabParams>()
 export const TabNavigator: React.FC = () => {
   const t = useTranslation()
   const rootNavigator = useRootNavigator()
+  const { Font } = useTheme()
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.Flame
       }}
-      tabBar={(props) => <TabBar { ...props} />}
+      tabBar={props => <TabBar {...props} />}
     >
       <Tab.Screen
         name={TabRoutes.Home}
@@ -56,10 +69,10 @@ export const TabNavigator: React.FC = () => {
             <Pressable
               onPress={() => rootNavigator.navigate(ModalRoutes.AddClient)}
               hitSlop={defaultHitSlop}
-              style={{ flexDirection: 'row'}}
+              style={styles.rightButtonContainer}
             >
-              <Label.H1 t='clients.new' style={{ color: Colors.Flame }} />
-              <SVG xml={NewClient} width={20} height={20} color={Colors.Flame} />
+              <Label.H4 t='clients.new' style={[{ color: Colors.Flame }, Font.transform.uppercase]} />
+              <SVG style={styles.icon} xml={NewClient} width={20} height={20} color={Colors.Flame} />
             </Pressable>
           ),
           tabBarIcon: ({ color }) => <SVG xml={People} color={color} />

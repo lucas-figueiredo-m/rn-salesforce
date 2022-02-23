@@ -1,8 +1,8 @@
-import { NavigatorScreenParams } from "@react-navigation/native";
-import { TabParams } from "./TabNavigator/TabTypes";
+import { NavigatorScreenParams } from '@react-navigation/native'
+import { TabParams } from './TabNavigator/TabTypes'
 
 export enum MainRoutes {
-  Tabs = 'Tabs',
+  Tabs = 'Tabs'
 }
 
 export enum ModalRoutes {
@@ -11,7 +11,7 @@ export enum ModalRoutes {
 }
 
 export type MainStackParams = {
-  [MainRoutes.Tabs]: NavigatorScreenParams<TabParams>,
-  [ModalRoutes.AddClient]: undefined,
+  [MainRoutes.Tabs]: NavigatorScreenParams<TabParams>
+  [ModalRoutes.AddClient]: undefined
   [ModalRoutes.AddOrder]: undefined
 }

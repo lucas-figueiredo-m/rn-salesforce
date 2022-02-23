@@ -8,12 +8,10 @@ const i18nResources = {
   pt: { translation: pt }
 }
 
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: i18nResources,
-    // lng: 'pt'
-    fallbackLng: 'pt'
-  })
+i18n.use(initReactI18next).init({
+  resources: i18nResources,
+  // lng: 'pt'
+  fallbackLng: 'pt'
+})
 
-  export default i18n
+export default i18n

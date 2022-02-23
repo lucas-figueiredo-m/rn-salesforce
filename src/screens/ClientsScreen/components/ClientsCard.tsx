@@ -2,7 +2,7 @@ import withObservables, { ObservableifyProps } from '@nozbe/with-observables'
 import { Client as ClientDB } from 'models'
 import React from 'react'
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { createClientService } from 'services/Client/api';
+import { createClientService } from 'services/Client/api'
 import { Colors } from 'react-native/Libraries/NewAppScreen'
 
 interface Props {
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   },
 
   deleteText: {
-    fontWeight: "600",
+    fontWeight: '600',
     color: Colors.White
   }
 })
@@ -50,31 +50,24 @@ export const ClientCardToObserve: React.FC<Props> = ({ client }) => {
 
   return (
     <>
-      {
-        client.map((cli, index) => (
-          <View key={index} style={styles.root}>
-            <View>
-              <Text>
-                <Text>Client name: </Text>
-                <Text>{cli.socialName}</Text>
-              </Text>
-              <Text>
-                <Text>Document: </Text>
-                <Text>{cli.document}</Text>
-              </Text>
-            </View>
-
-            <TouchableOpacity
-              onPress={() => onDelete(cli.id)}
-              style={styles.delete}
-            >
-              <Text style={styles.deleteText}>DELETE</Text>
-            </TouchableOpacity>
+      {client.map((cli, index) => (
+        <View key={index} style={styles.root}>
+          <View>
+            <Text>
+              <Text>Client name: </Text>
+              <Text>{cli.socialName}</Text>
+            </Text>
+            <Text>
+              <Text>Document: </Text>
+              <Text>{cli.document}</Text>
+            </Text>
           </View>
-      
-        ))
 
-      }
+          <TouchableOpacity onPress={() => onDelete(cli.id)} style={styles.delete}>
+            <Text style={styles.deleteText}>DELETE</Text>
+          </TouchableOpacity>
+        </View>
+      ))}
     </>
   )
 }

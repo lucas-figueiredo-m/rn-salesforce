@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View , Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
-import { createClientService } from 'services/Client/api';
-import { Client, columns, database, tables } from 'storage';
-import { ClientCard } from './components/ClientsCard';
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native'
+import { createClientService } from 'services/Client/api'
+import { Client, database, tables } from 'storage'
+import { ClientCard } from './components/ClientsCard'
 
 const Clients = database.get<Client>(tables.client).query().observe()
 
@@ -34,7 +34,6 @@ const ClientsScreen: React.FC = () => {
         document: '104.979.466-45'
       })
       setCount(prevCount => prevCount + 1)
-      
     } catch (error) {
       console.log('Error: ', JSON.stringify(error))
     }
@@ -44,10 +43,7 @@ const ClientsScreen: React.FC = () => {
     <View>
       <ScrollView>
         <ClientCard client={Clients} />
-        <TouchableOpacity
-          onPress={onAdd}
-          style={styles.add}
-        >
+        <TouchableOpacity onPress={onAdd} style={styles.add}>
           <Text>ADD</Text>
         </TouchableOpacity>
       </ScrollView>

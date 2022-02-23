@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
 
   deleteText: {
-    fontWeight: "600",
+    fontWeight: '600',
     color: Colors.White
   }
 })
