@@ -1,7 +1,6 @@
 import { Model } from '@nozbe/watermelondb'
 import { Tables } from 'storage/schema'
 import { date, field, readonly, text } from '@nozbe/watermelondb/decorators'
-import { columns, tables } from 'storage'
 
 export enum ColumnClient {
   socialName = 'social_name',

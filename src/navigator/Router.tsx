@@ -16,6 +16,7 @@ const Router: React.FC = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name={MainRoutes.Tabs} component={TabNavigator} />
 
+        {/** // TODO: add a navigator instead of a group to handle in-modal navigation */}
         <Stack.Group screenOptions={modalOptions}>
           <Stack.Screen name={ModalRoutes.AddClient} component={AddClientScreen} />
           <Stack.Screen name={ModalRoutes.AddOrder} component={AddOrderScreen} />

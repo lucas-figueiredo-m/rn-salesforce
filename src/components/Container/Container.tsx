@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
   fullScreen: {
@@ -12,7 +12,11 @@ const styles = StyleSheet.create({
 })
 
 const Modal: React.FC = ({ children }) => {
-  return <View style={[styles.fullScreen, styles.flexBottom]}>{children}</View>
+  return (
+    <KeyboardAvoidingView behavior='position' style={[styles.fullScreen, styles.flexBottom]}>
+      {children}
+    </KeyboardAvoidingView>
+  )
 }
 
 export default {

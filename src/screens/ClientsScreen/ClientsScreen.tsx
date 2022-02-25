@@ -19,14 +19,6 @@ const styles = StyleSheet.create({
 const ClientsScreen: React.FC = () => {
   const [count, setCount] = useState(0)
 
-  const retrieveData = async () => {
-    // console.log('Test: ', columns.client)
-    const list = await createClientService().list()
-
-    // eslint-disable-next-line no-console
-    console.log('list: ', list)
-  }
-
   const onAdd = async () => {
     try {
       await createClientService().create({
@@ -35,7 +27,7 @@ const ClientsScreen: React.FC = () => {
       })
       setCount(prevCount => prevCount + 1)
     } catch (error) {
-      console.log('Error: ', JSON.stringify(error))
+      return
     }
   }
 
