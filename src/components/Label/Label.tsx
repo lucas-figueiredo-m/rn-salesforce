@@ -2,20 +2,22 @@ import useTheme from 'hooks/useTheme'
 import useTranslation from 'hooks/useTranslation'
 import React from 'react'
 import { StyleProp, Text, TextProps, TextStyle } from 'react-native'
+import { Colors } from 'theme'
 import { Translation } from 'types/common'
 
 interface Props extends TextProps {
   t?: Translation
   style?: StyleProp<TextStyle>
+  color?: Colors
 }
 
-const Label: React.FC<Props> = ({ t, style, children }) => {
+const Label: React.FC<Props> = ({ t, style, children, color = Colors.Black }) => {
   const { Font } = useTheme()
   const translate = useTranslation()
 
-  if (t) return <Text style={[style, Font.family.Montserrat]}>{translate(t)}</Text>
+  if (t) return <Text style={[style, Font.family.Montserrat, { color }]}>{translate(t)}</Text>
 
-  return <Text style={[style, Font.family.Montserrat]}>{children}</Text>
+  return <Text style={[style, Font.family.Montserrat, { color }]}>{children}</Text>
 }
 
 const Title: React.FC<Props> = props => {

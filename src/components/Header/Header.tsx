@@ -11,15 +11,16 @@ import useTheme from 'hooks/useTheme'
 interface Props {
   onLeftPress: () => void
   label: Translation
+  icon?: string
 }
 
-const Modal: React.FC<Props> = ({ onLeftPress, label }) => {
+const Modal: React.FC<Props> = ({ onLeftPress, label, icon = x }) => {
   const { Font, Layout } = useTheme()
 
   return (
     <View style={Layout.rows.verticalCenter}>
       <Pressable onPress={onLeftPress} hitSlop={defaultHitSlop}>
-        <SVG xml={x} width={30} height={30} color={Colors.Black} />
+        <SVG xml={icon} width={30} height={30} color={Colors.Black} />
       </Pressable>
       <Label.H3 t={label} style={Font.transform.uppercase} />
     </View>

@@ -1,4 +1,15 @@
 export default {
+  common: {
+    continue: 'Continuar'
+  },
+  screens: {
+    registerMerchant: {
+      title: 'Novo Cadastro'
+    },
+    registerEmployees: {
+      title: 'Contatos'
+    }
+  },
   tabNames: {
     home: 'Início',
     clients: 'Clientes',

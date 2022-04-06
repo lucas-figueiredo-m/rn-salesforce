@@ -1,6 +1,6 @@
 import useTheme from 'hooks/useTheme'
-import React from 'react'
-import { TextInput, TextInputProps, StyleSheet, StyleProp, TextStyle, View } from 'react-native'
+import React, { useRef } from 'react'
+import { TextInput, TextInputProps, StyleSheet, StyleProp, TextStyle, View, Pressable, ViewStyle } from 'react-native'
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -20,7 +20,9 @@ interface InputState {
 interface Props extends TextInputProps {
   state: InputState
   placeholder: string
-  customStyle?: StyleProp<TextStyle>
+  required?: boolean
+  customContainerStyle?: StyleProp<ViewStyle>
+  customInputStyle?: StyleProp<TextStyle>
 }
 
 const styles = StyleSheet.create({
@@ -40,9 +42,18 @@ enum InputStatus {
   Error
 }
 
-export const Input: React.FC<Props> = ({ state, placeholder, customStyle, ...props }) => {
+export const Input: React.FC<Props> = ({
+  state,
+  placeholder,
+  customInputStyle,
+  customContainerStyle,
+  required,
+  ...props
+}) => {
   const { Spacing, Font } = useTheme()
   const placeholderStatus = useSharedValue<InputStatus>(InputStatus.Blur)
+
+  const InputRef = useRef<TextInput>(null)
 
   const containerStyle = useAnimatedStyle(() => {
     const borderColor = interpolateColor(
@@ -88,7 +99,7 @@ export const Input: React.FC<Props> = ({ state, placeholder, customStyle, ...pro
   })
 
   return (
-    <View style={Spacing.paddings.vertical.xs}>
+    <View style={[Spacing.paddings.vertical.xs, customContainerStyle]}>
       <Animated.View style={[styles.root, containerStyle]}>
         <TextInput
           style={[
@@ -96,24 +107,27 @@ export const Input: React.FC<Props> = ({ state, placeholder, customStyle, ...pro
             Spacing.paddings.horizontal.sm,
             Font.family.Montserrat,
             Font.size.md,
-            customStyle
+            customInputStyle
           ]}
+          ref={InputRef}
           onFocus={() => (placeholderStatus.value = withTiming(InputStatus.Focus, { duration: 200 }))}
           onBlur={() => (placeholderStatus.value = withTiming(InputStatus.Blur, { duration: 200 }))}
           value={state.value}
           {...props}
         />
-        <Animated.Text
-          style={[
-            styles.placeholder,
-            placeholderStyle,
-            Font.family.Montserrat,
-            Font.weight.semibold,
-            Spacing.paddings.horizontal.xs
-          ]}
-        >
-          {placeholder}
-        </Animated.Text>
+        <Pressable onPress={() => InputRef.current?.focus()}>
+          <Animated.Text
+            style={[
+              styles.placeholder,
+              placeholderStyle,
+              Font.family.Montserrat,
+              Font.weight.semibold,
+              Spacing.paddings.horizontal.xs
+            ]}
+          >
+            {required ? placeholder + '*' : placeholder}
+          </Animated.Text>
+        </Pressable>
       </Animated.View>
     </View>
   )

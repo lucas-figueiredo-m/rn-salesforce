@@ -178,5 +178,10 @@ export default {
       xl: { left: Metrics.xl },
       xxl: { left: Metrics.xxl }
     })
-  }
+  },
+  border: StyleSheet.create({
+    sm: { borderRadius: Metrics.xxs },
+    md: { borderRadius: Metrics.xs },
+    lg: { borderRadius: Metrics.md }
+  })
 }
